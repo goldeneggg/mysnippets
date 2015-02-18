@@ -1,0 +1,16 @@
+snippet     if_logged_in
+abbr        <% logged_in? %>
+    <% if logged_in? %>
+      ${0:code}
+    <% else %>
+    <% end %>
+
+snippet     form_for
+abbr        <%= form_for %>
+    <%= form_for(${1:OBJECT}, ${2:ATTRS}) do |f| %>
+      ${0:code}
+    <% end %>
+
+snippet     link_to
+abbr        <%= link_to %>
+    <%= link_to '${1:LABEL}', ${2:PATH}, ${3:ATTRS} %>

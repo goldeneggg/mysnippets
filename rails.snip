@@ -1,0 +1,22 @@
+snippet     bt
+abbr        belongs_to
+    belongs_to :${1:NAME}
+
+
+#{model}
+snippet     hm
+abbr        has_many
+    has_many :${1:NAME}, class_name: '${2:CLASSNAME}', foreign_key: :${3:COLUMN}
+
+snippet     ai
+abbr        add_index
+    add_index :${1:NAME}, [:${2:COLUMNS}], unique: ${3:IS_UNIQUE}
+
+snippet     vds
+abbr        validates
+    validates :${1:COLUMN}, ${2:ATTRS}
+
+#{migration}
+snippet     ccl
+abbr        change_column
+    change_column :${1:TBL}, :${2:COLUMN}, ${3:ATTRS}
