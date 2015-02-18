@@ -1,0 +1,16 @@
+snippet gomain
+    package main
+
+    import (
+      "fmt"
+    )
+
+    func main() {
+      ${0:code}
+    }
+
+snippet pf
+    fmt.Printf("${1:#:TMPL}", ${0:vars})
+
+snippet pln
+    fmt.Println("${0:str}")

@@ -1,0 +1,193 @@
+########## cli template using option parameters
+snippet mycli
+options indent
+    #!/bin/sh
+
+    usage() {
+        cat << __EOT__
+    Usage: $0 [-ABC] [-s <sage> -d <dage>] [other options]
+    HOGE script
+
+    HOGE target
+      -A                          A
+      -B                          B
+      -C                          C
+
+    Options:
+      -s[=sage]                   sage
+      -d[=dage]                   dage
+      -h                          print a summary of the options
+
+    __EOT__
+    }
+
+    L=""
+
+    SAGE
+    DAGE
+    while getopts "ABC:s:d:h" opt
+    do
+        case $opt in
+            \?)
+                OPT_ERROR=1
+                ;;
+            A)
+                L="A"
+                ;;
+            B)
+                L="B"
+                ;;
+            C)
+                L="C"
+                ;;
+            s)
+                SAGE=$OPTARG
+                ;;
+            d)
+                DAGE=$OPTARG
+                ;;
+            h)
+                usage
+                exit 0
+                ;;
+        esac
+    done
+
+    if [ $OPT_ERROR ]
+    then
+        echo "$0: invalid option assigned"
+        usage
+        exit 1
+    fi
+
+    if [ "$L" = "" ]
+    then
+        echo "$0: logtype not assigned"
+        usage
+        exit 1
+    fi
+
+    shift $(( $OPTIND - 1 ))
+    ARGS="$@"
+
+    exit 0
+
+snippet myopt
+options indent
+    declare -r default_path="www"
+    declare release_path=${default_path}
+    unset dry_run
+    while true; do
+      case "\$1" in
+        -h | --help ) usage; exit 1 ;;
+        -v | --version ) print_version; exit 1 ;;
+        -p | --path ) release_path=\$2; shift 2 ;;
+        -n | --dry-run) dry_run=true; shift ;;
+        * ) break ;;
+      esac
+    done
+    if [ $# != "1" ]; then
+      usage
+      fail "A argument must be specified"
+    fi
+
+##### class For for forloop
+snippet For.byfromto
+    for i in {${1:FROM}..${2:TO}}
+    do
+        ${0:code}
+    done
+
+snippet For.byfromtopad
+    for i in $(seq -w ${1:FROM} 1 ${2:TO})
+    do
+        ${0:code}
+    done
+
+##### class While for whileloop
+snippet While.infile
+    while read line
+    do
+        ${0:code}
+    done < ${1:INFILE}
+
+##### class Case for case sentence
+snippet Case.new
+    case ${${1:VAR}} in
+        ${2:FIRST})
+            ${3:code_first}
+            ;;
+        ${4:SECOND})
+            ${5:code_second}
+            ;;
+        *)
+            ${6:code_other}
+            ;;
+    esac
+
+##### class Var for variable
+snippet Var.expr
+    $((${1:EXPR}))
+
+snippet Var.withdef
+    ${${1:VAR}:-${2:DEFAULT}}
+
+snippet Var.assigndef
+    ${${1:VAR}:=${2:DEFAULT}}
+
+##### class Str for string
+snippet Str.substring
+    ${${1:STR}:${2:START}:${3:LENGTH}}
+
+snippet Str.length
+    ${#${1:STR}}
+
+snippet Str.split
+    ${=${1:STR}}
+
+snippet Str.replace
+    ${${1:STR}//${2:PATTERN}/${3:NEW}}
+
+snippet Str.toarray
+    ${(A)${1:TO}:=${=${2:FROM}}}
+
+snippet Str.tohash
+    ${(AA)${1:TO}:=${=${2:FROM}}}
+
+snippet Str.indexof
+    case ${${1:TARGET_VAR}} in
+        *${2:STR}*)
+            echo true
+            ;;
+        *)
+            echo false
+            ;;
+    esac
+
+# only zsh
+snippet Str.toupper
+    ${(U)${1:STR}}
+
+# only zsh
+snippet Str.tolower
+    ${(L)${1:STR}}
+
+##### class Arr for array
+snippet Arr.all
+    ${${1:ARR}[@]}
+
+snippet Arr.count
+    ${#${1:ARR}[@]}
+
+snippet Arr.partial
+    ${${1:ARR}[${2:FROM},${3:TO}]}
+
+snippet Arr.mkstring
+    ${#${1:ARR}}
+
+##### class Hash for key-value hashed array
+snippet Hash.keys
+    ${(k)${1:HASH}}
+
+snippet Hash.values
+    ${(v)${1:HASH}}

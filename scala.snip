@@ -1,0 +1,23 @@
+snippet mymain
+options indent
+    def main(args: Array[String]) {
+      ${0:code}
+    }
+
+snippet myobj
+regexp '^\s*'
+    object ${1:OBJECT_NAME}${2:#:(ARG)}${3:#: extends }${4:#: with} {
+
+        ${0:CODE}
+
+    }
+
+snippet myval
+    val ${1:NAME}${2:#:: TYPE} = ${0:VALUE}
+
+snippet myloan
+    def using[T <: { def close(): Unit }, S](obj: T)(operation: T => S) = {
+      val result = operation(obj)
+      obj.close()
+      result
+    }
