@@ -1,22 +1,37 @@
+#{model}
+##{association}
 snippet     bt
 abbr        belongs_to
     belongs_to :${1:NAME}
 
-
-#{model}
 snippet     hm
 abbr        has_many
-    has_many :${1:NAME}, class_name: '${2:CLASSNAME}', foreign_key: :${3:COLUMN}
+    has_many :${1:NAME}, ${2:OPTIONS}
 
 snippet     ai
 abbr        add_index
     add_index :${1:NAME}, [:${2:COLUMNS}], unique: ${3:IS_UNIQUE}
 
+##{callback}
+snippet     bed
+abbr        before_destroy
+    before_destroy :${1:CALLBACK_FUNC}
+
+##{validation}
 snippet     vds
 abbr        validates
-    validates :${1:COLUMN}, ${2:ATTRS}
+    validates :${1:COLUMN}, ${2:OPTIONS}
 
 #{migration}
 snippet     ccl
 abbr        change_column
-    change_column :${1:TBL}, :${2:COLUMN}, ${3:ATTRS}
+    change_column :${1:TBL}, :${2:COLUMN}, ${3:OPTIONS}
+
+#{controller}
+snippet     resf
+abbr        rescue_from
+    rescue_from ${1:EXCEPTIONS}, with: :${2:METHOD}
+
+snippet     rndr
+abbr        render
+    render '${1:VIEWNAME}', ${2:OPTIONS}

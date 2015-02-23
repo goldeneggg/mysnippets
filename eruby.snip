@@ -14,3 +14,8 @@ abbr        <%= form_for %>
 snippet     link_to
 abbr        <%= link_to %>
     <%= link_to '${1:LABEL}', ${2:PATH}, ${3:ATTRS} %>
+
+snippet     ruby_code_block
+abbr        <% LIST.each do |elem | %>...<% end %>
+    <% ${1:LIST}.each do |${2:ELEM}| %>
+    <% end %>
