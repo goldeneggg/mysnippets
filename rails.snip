@@ -1,4 +1,8 @@
 #{model}
+snippet     ai
+abbr        add_index
+    add_index :${1:NAME}, [:${2:COLUMNS}], unique: ${3:IS_UNIQUE}
+
 ##{association}
 snippet     bt
 abbr        belongs_to
@@ -7,10 +11,6 @@ abbr        belongs_to
 snippet     hm
 abbr        has_many
     has_many :${1:NAME}, ${2:OPTIONS}
-
-snippet     ai
-abbr        add_index
-    add_index :${1:NAME}, [:${2:COLUMNS}], unique: ${3:IS_UNIQUE}
 
 ##{callback}
 snippet     bed

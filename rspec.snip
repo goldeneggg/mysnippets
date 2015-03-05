@@ -1,0 +1,30 @@
+snippet     spdes
+abbr        describe
+    describe '${1:NAME}' do
+      ${0:code}
+    end
+
+snippet     spcon
+abbr        context
+    context '${1:COND}' do
+      ${0:code}
+    end
+
+snippet     spit
+abbr        it
+    it '${1:EXPECTED}' do
+      ${0:code}
+    end
+
+snippet     spex
+abbr        expect
+    expect(${1:OBJ}).to ${2:MATCHER}
+
+snippet     splet
+abbr        let
+    let(:${1:NAME}) { ${2:RETURN} }
+
+#{factory_girl}
+snippet     facseq
+abbr        sequence
+    sequence(:${1:NAME}) { |i| "${2:EVENTNAME}#{i}" }
