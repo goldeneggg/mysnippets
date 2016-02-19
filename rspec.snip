@@ -16,9 +16,53 @@ abbr        it
       ${0:code}
     end
 
-snippet     spex
-abbr        expect
-    expect(${1:OBJ}).to ${2:MATCHER}
+snippet     spshe
+abbr        shared_examples_for
+    shared_examples_for '${1:NAME}' do
+      ${0:code}
+    end
+
+snippet     spitb
+abbr        it_behaves_like
+    it_behaves_like '${1:NAME}' do
+      ${0:code}
+    end
+
+snippet     spshc
+abbr        shared_context
+    shared_context '${1:NAME}' do
+      ${0:code}
+    end
+
+snippet     spincc
+abbr        include_context
+    include_context '${1:NAME}' do
+      ${0:code}
+    end
+
+snippet     spex_eq
+abbr        expect_eq
+    expect(${1:OBJ}).to eq(${2:VAL})
+
+snippet     spex_rec
+abbr        expect_receive
+    expect(${1:MOCK}).to receive(${2:METHOD}).${3:OTHER}
+
+snippet     spex_ra
+abbr        expect_raise
+    expect\{ ${1:OBJ} \}.to raise_error(${2:EXCEPTION})
+
+snippet     spex_ch
+abbr        expect_change
+    expect\{ ${1:OBJ} \}.to change(${2:OBJECT}, ${3:SYM}).${4:CHANGE_EXPR}
+
+snippet     spallret
+abbr        allow_receive_return
+    allow(${1:MOCK}).to receive(:${2:METHOD}).and_return(${3:RETURN})
+
+snippet     spallanyret
+abbr        allow_any_instance_of_receive_return
+    allow_any_instance_of(${1:CLASS}).to receive(:${2:METHOD}).and_return(${3:RETURN})
 
 snippet     splet
 abbr        let
