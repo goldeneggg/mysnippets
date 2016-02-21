@@ -1,37 +1,41 @@
 #{model}
-snippet     ai
+snippet     add_in
 abbr        add_index
     add_index :${1:NAME}, [:${2:COLUMNS}], unique: ${3:IS_UNIQUE}
 
 ##{association}
-snippet     bt
+snippet     belong
 abbr        belongs_to
     belongs_to :${1:NAME}
 
-snippet     hm
+snippet     has_m
+abbr        has_many
+    has_many :${1:NAME}, ${2:OPTIONS}
+
+snippet     has_o
 abbr        has_many
     has_many :${1:NAME}, ${2:OPTIONS}
 
 ##{callback}
-snippet     bed
+snippet     before_d
 abbr        before_destroy
     before_destroy :${1:CALLBACK_FUNC}
 
 ##{validation}
-snippet     vds
+snippet     vali
 abbr        validates
     validates :${1:COLUMN}, ${2:OPTIONS}
 
 #{migration}
-snippet     ccl
+snippet     change_c
 abbr        change_column
     change_column :${1:TBL}, :${2:COLUMN}, ${3:OPTIONS}
 
 #{controller}
-snippet     resf
+snippet     rescue_f
 abbr        rescue_from
     rescue_from ${1:EXCEPTIONS}, with: :${2:METHOD}
 
-snippet     rndr
+snippet     rend
 abbr        render
     render '${1:VIEWNAME}', ${2:OPTIONS}

@@ -1,74 +1,74 @@
-snippet     spdes
+snippet     descr
 abbr        describe
     describe '${1:NAME}' do
       ${0:code}
     end
 
-snippet     spcon
+snippet     conte
 abbr        context
     context '${1:COND}' do
       ${0:code}
     end
 
-snippet     spit
+snippet     it
 abbr        it
     it '${1:EXPECTED}' do
       ${0:code}
     end
 
-snippet     spshe
+snippet     shared_e
 abbr        shared_examples_for
     shared_examples_for '${1:NAME}' do
       ${0:code}
     end
 
-snippet     spitb
+snippet     it_be
 abbr        it_behaves_like
     it_behaves_like '${1:NAME}' do
       ${0:code}
     end
 
-snippet     spshc
+snippet     shared_c
 abbr        shared_context
     shared_context '${1:NAME}' do
       ${0:code}
     end
 
-snippet     spincc
+snippet     include_c
 abbr        include_context
     include_context '${1:NAME}' do
       ${0:code}
     end
 
-snippet     spex_eq
+snippet     expe
 abbr        expect_eq
     expect(${1:OBJ}).to eq(${2:VAL})
 
-snippet     spex_rec
+snippet     expere
 abbr        expect_receive
     expect(${1:MOCK}).to receive(${2:METHOD}).${3:OTHER}
 
-snippet     spex_ra
+snippet     expera
 abbr        expect_raise
     expect\{ ${1:OBJ} \}.to raise_error(${2:EXCEPTION})
 
-snippet     spex_ch
+snippet     expech
 abbr        expect_change
     expect\{ ${1:OBJ} \}.to change(${2:OBJECT}, ${3:SYM}).${4:CHANGE_EXPR}
 
-snippet     spallret
+snippet     allowre
 abbr        allow_receive_return
     allow(${1:MOCK}).to receive(:${2:METHOD}).and_return(${3:RETURN})
 
-snippet     spallanyret
+snippet     allowany
 abbr        allow_any_instance_of_receive_return
     allow_any_instance_of(${1:CLASS}).to receive(:${2:METHOD}).and_return(${3:RETURN})
 
-snippet     splet
+snippet     let
 abbr        let
     let(:${1:NAME}) { ${2:RETURN} }
 
 #{factory_girl}
-snippet     facseq
+snippet     sequ
 abbr        sequence
     sequence(:${1:NAME}) { |i| "${2:EVENTNAME}#{i}" }
