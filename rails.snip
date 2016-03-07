@@ -39,3 +39,9 @@ abbr        rescue_from
 snippet     rend
 abbr        render
     render '${1:VIEWNAME}', ${2:OPTIONS}
+
+snippet     transa
+abbr        ActiveRecord::Base.transaction
+    ActiveRecord::Base.transaction do
+      ${0:code}
+    end

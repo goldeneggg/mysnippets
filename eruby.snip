@@ -19,3 +19,10 @@ snippet     ruby_code_block
 abbr        <% LIST.each do |elem | %>...<% end %>
     <% ${1:LIST}.each do |${2:ELEM}| %>
     <% end %>
+
+snippet     case_when_var
+abbr        <% case VAR %>
+    <% case ${1:VAR} %>
+    <% when ${2:EXPR} %>
+      ${0:code}
+    <% end %>

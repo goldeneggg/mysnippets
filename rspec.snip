@@ -40,6 +40,12 @@ abbr        include_context
       ${0:code}
     end
 
+snippet     befo
+abbr        before
+    before(:${1:TIMING}) do
+      ${0:code}
+    end
+
 snippet     expe
 abbr        expect_eq
     expect(${1:OBJ}).to eq(${2:VAL})
