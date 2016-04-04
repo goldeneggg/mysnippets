@@ -5,3 +5,72 @@ abbr        now = Time.zone.now
 snippet     bin
 abbr        binding.pry
     binding.pry
+
+snippet     benchips
+abbr        benchmark/ips
+options     indent
+    require 'benchmark/ips'
+
+    ${0:code}
+
+    def ${1:xxx}
+      ${2}
+    end
+
+    def ${3:yyy}
+      ${4}
+    end
+
+    Benchmark.ips do |x|
+      x.report('${5:do_xxx}') { ${6:xxx} }
+      x.report('${7:do_yyy}') { ${8:yyy} }
+      x.compare!
+    end
+
+snippet     benchipsgcd
+abbr        benchmark/ips without GC
+options     indent
+    require 'benchmark/ips'
+
+    class GCSuite
+      def warming(*)
+        run_gc
+      end
+
+      def running(*)
+        run_gc
+      end
+
+      def warmup_stats(*)
+      end
+
+      def add_report(*)
+      end
+
+      private
+
+      def run_gc
+        GC.enable
+        GC.start
+        GC.disable
+      end
+    end
+
+    suite = GCSuite.new
+
+    ${0:code}
+
+    def ${1:xxx}
+      ${2}
+    end
+
+    def ${3:yyy}
+      ${4}
+    end
+
+    Benchmark.ips do |x|
+      x.config(suite: suite)
+      x.report('${5:do_xxx}') { ${6:xxx} }
+      x.report('${7:do_yyy}') { ${8:yyy} }
+      x.compare!
+    end
