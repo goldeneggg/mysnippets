@@ -1,0 +1,45 @@
+snippet compose-top
+options indent
+    version: '3'
+    services:
+snippet compose-mysql8
+options indent
+      mysql:
+        image: mysql:8.0
+        volumes:
+          - ./.data/mysql:/var/lib/mysql
+        ports:
+          - "3306:3306"
+          - "33060:33060"
+        environment:
+          - MYSQL_ROOT_PASSWORD=xxx  # 明示する場合
+          - MYSQL_ROOT_PASSWORD  # ホストの環境変数の内容を渡す場合
+snippet compose-redis5
+options indent
+      redis:
+        image: redis:5.0
+        volumes:
+          - ./.data/redis:/data
+        ports:
+          - "6379:6379"
+snippet compose-fluent012
+options indent
+      fluentd:
+        image: fluent/fluentd:v0.12
+        volumes:
+          - ./docker-conf/fluentd/etc:/fluentd/etc
+        ports:
+          - "24224:24224"
+snippet compose-build
+options indent
+      app:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        depends_on:  # See: https://docs.docker.com/compose/startup-order/
+          - mysql
+        env_file:
+          - ./docker-conf/app/envs
+        ports:
+          - "8888:8888"
+        command: ["./wait-for-it.sh", "db", "3306", "--", "python", "app.py"]
