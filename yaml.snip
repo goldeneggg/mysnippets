@@ -43,3 +43,17 @@ options indent
         ports:
           - "8888:8888"
         command: ["./wait-for-it.sh", "db", "3306", "--", "python", "app.py"]
+snippet travis-lang
+options indent
+    language: ${1:go}
+snippet travis-sudo
+options indent
+    sudo: ${1:false}
+snippet travis-install
+options indent
+    install:
+      - ${1:install}
+snippet travis-script
+options indent
+    script:
+      - ${1:script}
