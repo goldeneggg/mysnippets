@@ -1,0 +1,45 @@
+snippet target
+abbr Add new target
+    .PHONY: ${1:name}
+    ${2:name}:
+        ${0:code}
+
+snippet call
+abbr Call defined variable or macro
+    $(call ${1:VAR},${0:args})
+
+snippet eval
+abbr Define eval using VAR
+    $(eval ${1:VAR})
+
+snippet filter
+abbr Extract filtering values
+    $(filter ${1:pattern},${2:VAR})
+
+snippet origin
+abbr Check variable's original place
+    $(origin ${1:VAR})
+
+snippet override
+abbr Override a variable
+    override ${1:NAME}=${2:VAL}
+
+snippet if
+abbr Add if block
+    if (${1:COND1},${2:if},${3:else(optional)})
+
+snippet ifeq
+abbr Add ifeq block
+    ifeq (${1:COND1},${2:COND2})
+      ${0}
+    endif
+
+snippet ifndef
+abbr Add ifndef block
+    ifndef ${1:VAR}
+      ${2:VAR} := ${3:VAL}
+    endif
+
+snippet recursive
+abbr Recursive make call in a Makefile
+    $(MAKE) ${1:OPTS}
