@@ -43,3 +43,11 @@ abbr Add ifndef block
 snippet recursive
 abbr Recursive make call in a Makefile
     $(MAKE) ${1:OPTS}
+
+snippet recursive-once-var
+abbr Define recursive var that is executed perfectly once.
+    ${1:VARNAME} = $(eval ${2:VARNAME} := ${0:code})$(${3:VARNAME})
+
+snippet recursive-once-shellvar
+abbr Define recursive var that is executed perfectly once by shell command.
+    ${1:VARNAME} = $(eval ${2:VARNAME} := $(shell ${0:code}))$(${3:VARNAME})
