@@ -9,13 +9,23 @@ snippet gomain
       ${0:code}
     }
 
-snippet pf
+snippet mypf
     fmt.Printf("${1:#:TMPL}", ${0:vars})
 
-snippet pln
+snippet mypln
     fmt.Println("${0:str}")
 
-snippet lambdaapi
+snippet myie
+    if err != nil {
+      ${0:code}
+    }
+
+snippet myier
+    if err != nil {
+      return nil, err
+    }
+
+snippet mylambdaapi
     package main
 
     import (
